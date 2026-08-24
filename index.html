@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<title>Shed Tracker</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header id="topbar">
+  <button id="backBtn" class="icon-btn" hidden aria-label="Back">&#8592;</button>
+  <h1 id="title">Shed Tracker</h1>
+  <button id="syncBtn" class="icon-btn" aria-label="Sync" title="Sync to OneDrive">&#8635;</button>
+</header>
+
+<div id="searchbar">
+  <input id="q" type="search" placeholder="Search everything&hellip;" autocomplete="off" enterkeyhint="search">
+  <button id="clearQ" class="icon-btn" hidden aria-label="Clear">&times;</button>
+</div>
+
+<main id="view"></main>
+
+<nav id="tabs">
+  <a href="#/boxes"     data-tab="boxes"><span>&#9707;</span>Boxes</a>
+  <a href="#/locations" data-tab="locations"><span>&#9873;</span>Places</a>
+  <a href="#/settings"  data-tab="settings"><span>&#9881;</span>Settings</a>
+</nav>
+
+<button id="fab" aria-label="New box">+</button>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<div id="sheet" hidden>
+  <div id="sheetBackdrop"></div>
+  <div id="sheetPanel"><div id="sheetBody"></div></div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
