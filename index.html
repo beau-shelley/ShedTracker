@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#14140f">
 <title>Shed Tracker</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
@@ -14,12 +14,17 @@
 <body>
 
 <header id="topbar">
-  <button id="backBtn" class="icon-btn" hidden aria-label="Back">&#8592;</button>
+  <button id="backBtn" class="icon-btn" hidden aria-label="Back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+  </button>
   <h1 id="title">Shed Tracker</h1>
-  <button id="syncBtn" class="icon-btn" aria-label="Sync" title="Sync to OneDrive">&#8635;</button>
+  <button id="syncBtn" class="icon-btn" aria-label="Sync" title="Sync to OneDrive">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>
+  </button>
 </header>
 
 <div id="searchbar">
+  <svg id="searchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
   <input id="q" type="search" placeholder="Search everything&hellip;" autocomplete="off" enterkeyhint="search">
   <button id="clearQ" class="icon-btn" hidden aria-label="Clear">&times;</button>
 </div>
@@ -27,9 +32,18 @@
 <main id="view"></main>
 
 <nav id="tabs">
-  <a href="#/boxes"     data-tab="boxes"><span>&#9707;</span>Boxes</a>
-  <a href="#/locations" data-tab="locations"><span>&#9873;</span>Places</a>
-  <a href="#/settings"  data-tab="settings"><span>&#9881;</span>Settings</a>
+  <a href="#/boxes" data-tab="boxes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2.3"/><path d="M10 7.5h4"/><rect x="6.3" y="9.6" width="11.4" height="9.9" rx="1.8"/></svg>
+    Boxes
+  </a>
+  <a href="#/locations" data-tab="locations">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+    Places
+  </a>
+  <a href="#/settings" data-tab="settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2" fill="var(--card)"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="16" cy="12" r="2" fill="var(--card)"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="7" cy="18" r="2" fill="var(--card)"/></svg>
+    Settings
+  </a>
 </nav>
 
 <button id="fab" aria-label="New box">+</button>
@@ -38,7 +52,7 @@
 
 <div id="sheet" hidden>
   <div id="sheetBackdrop"></div>
-  <div id="sheetPanel"><div id="sheetBody"></div></div>
+  <div id="sheetPanel"><div class="sheet-handle" aria-hidden="true"></div><div id="sheetBody"></div></div>
 </div>
 
 <script type="module" src="js/app.js"></script>
