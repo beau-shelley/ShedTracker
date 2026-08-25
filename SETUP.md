@@ -109,7 +109,7 @@ retyping. Everything on the phone is untouched in the meantime.
 
 1. For each tub: **+** → confirm the number → photograph the contents →
    **Scan photos for keywords** → tap the ones that are real → dictate or type
-   anything the photos missed → set the status to *sealed*.
+   anything the photos missed.
 2. When a tub goes into a container, open it and set the place and position.
    The next box you create inherits that place automatically.
 3. At the end of each day, on wifi, tap the ↻ in the top corner to back up.

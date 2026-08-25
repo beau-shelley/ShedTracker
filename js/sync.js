@@ -122,14 +122,13 @@ export async function exportJson() {
 export async function exportCsv() {
   const [boxes, locations] = await Promise.all([store.allBoxes(), store.allLocations()]);
   const locName = new Map(locations.map(l => [l.id, l.name]));
-  const rows = [['Box', 'Name', 'Location', 'Position', 'Status', 'Contents', 'Tags', 'Notes']];
+  const rows = [['Box', 'Name', 'Location', 'Position', 'Contents', 'Tags', 'Notes']];
   for (const b of boxes) {
     rows.push([
       b.number,
       b.name,
       locName.get(b.locationId) || '',
       b.position || '',
-      b.status,
       b.items.map(i => i.text).join('; '),
       (b.tags || []).join('; '),
       (b.notes || '').replace(/\n/g, ' ')

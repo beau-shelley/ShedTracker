@@ -1,8 +1,6 @@
 // Domain layer: boxes, locations, items. Everything the UI talks to.
 import * as db from './db.js';
 
-export const STATUS = ['packing', 'sealed', 'stored', 'unpacked'];
-
 export function newBox(number) {
   const now = Date.now();
   return {
@@ -11,7 +9,6 @@ export function newBox(number) {
     name: '',               // optional human name, e.g. "Kitchen - pantry"
     locationId: null,       // where the tub physically is
     position: '',           // free text within the location, e.g. "row 2, back"
-    status: 'packing',
     items: [],              // [{ id, text, source }]
     tags: [],
     notes: '',

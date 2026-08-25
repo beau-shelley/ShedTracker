@@ -201,7 +201,7 @@ pre.ocr { white-space: pre-wrap; font-size: .78rem; color: var(--muted); max-hei
 
 /* --------------------------------------------------------- the sticker */
 .sticker {
-  flex: 0 0 auto; display: grid; place-items: center;
+  flex: 0 0 auto; display: inline-grid; place-items: center;
   min-width: 46px; height: 46px; padding: 0 6px;
   background: linear-gradient(180deg, var(--yellow), var(--yellow-deep));
   color: #14140f; border: 2px solid #14140f;
@@ -228,12 +228,6 @@ pre.ocr { white-space: pre-wrap; font-size: .78rem; color: var(--muted); max-hei
 }
 .mini { width: 50px; height: 50px; object-fit: cover; border-radius: var(--radius-sm); flex: 0 0 auto; }
 
-.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; background: var(--muted); }
-.status-dot.packing { background: var(--yellow-deep); }
-.status-dot.sealed { background: #d07d1a; }
-.status-dot.stored { background: var(--ok); }
-.status-dot.unpacked { background: var(--muted); }
-
 .found { font-size: .85rem; margin-top: 3px; }
 .found mark { background: var(--yellow); color: #14140f; border-radius: 3px; padding: 0 2px; }
 .where { font-size: .82rem; margin-top: 3px; font-weight: 600; }
@@ -248,7 +242,6 @@ pre.ocr { white-space: pre-wrap; font-size: .78rem; color: var(--muted); max-hei
 .box-head .name { font-size: 1.05rem; font-weight: 600; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips.status { margin-bottom: 12px; }
 .chip {
   border: 1px solid var(--line); background: var(--card); color: var(--muted);
   border-radius: 999px; padding: 6px 13px; font-size: .82rem; font-weight: 600; cursor: pointer;

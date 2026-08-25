@@ -149,8 +149,7 @@ function boxCard(b, extraHtml = '') {
         <div class="muted small">
           ${place ? esc(place) : '<em>no place yet</em>'}${b.position ? ' &middot; ' + esc(b.position) : ''}
         </div>
-        <div class="muted small">${b.items.length} item(s)${count ? ' &middot; ' + count + ' photo(s)' : ''}
-          &middot; <span class="status-dot ${b.status}"></span>${b.status}</div>
+        <div class="muted small">${b.items.length} item(s)${count ? ' &middot; ' + count + ' photo(s)' : ''}</div>
         ${extraHtml}
       </div>
       ${thumb ? `<img class="mini" src="${photosLib.objectUrl(thumb.thumb || thumb.blob, 'th_' + thumb.id)}" alt="">` : ''}

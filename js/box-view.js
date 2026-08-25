@@ -32,11 +32,6 @@ function paint(container) {
              placeholder="Name this box (optional)" maxlength="60">
     </div>
 
-    <div class="chips status">
-      ${store.STATUS.map(s => `
-        <button class="chip ${box.status === s ? 'on' : ''}" data-status="${s}">${s}</button>`).join('')}
-    </div>
-
     <section class="card">
       <h3>Where is it?</h3>
       <div class="row gap">
@@ -140,9 +135,6 @@ function bind(container) {
 
   container.addEventListener('click', async (e) => {
     const t = e.target;
-
-    const status = t.closest('[data-status]');
-    if (status) { box.status = status.dataset.status; return save(); }
 
     const rm = t.closest('[data-remove-item]');
     if (rm) { store.removeItem(box, rm.dataset.removeItem); return save(); }
