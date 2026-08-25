@@ -1,7 +1,7 @@
 // Offline support. Shipping containers rarely have good reception, so the app
 // itself is cached up front and the heavy vision libraries are cached the first
 // time you use them.
-const VERSION = 'st-v6';
+const VERSION = 'st-v7';
 const SHELL = 'shell-' + VERSION;
 const VENDOR = 'vendor-' + VERSION;
 

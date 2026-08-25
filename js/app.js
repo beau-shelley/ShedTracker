@@ -95,6 +95,7 @@ async function route() {
 async function onDataChanged() {
   await reload();
   updateSyncBadge();
+  debouncedAutoPush();
 }
 
 // -------------------------------------------------------- boxes list
@@ -247,6 +248,40 @@ async function quickSync() {
   }
 }
 
+// ------------------------------------------------------- background sync
+// Keeps devices converging without anyone tapping the sync button: a pull+push
+// on load/reconnect/foreground and a periodic tick, plus a push shortly after
+// local edits. Errors are swallowed here — the manual button still reports
+// them; this is best-effort and must never interrupt what the user is doing.
+async function backgroundSync() {
+  const st = await sync.status();
+  if (!st.signedIn || sync.isRunning()) return;
+
+  try {
+    const r = await sync.pull();
+    if (r.boxes || r.locations || r.photos) {
+      await reload();
+      // Never re-render the box detail view mid-sync: it could wipe out
+      // whatever the user is in the middle of typing there.
+      if (parseRoute().name !== 'box') await route();
+    }
+    await sync.push();
+  } catch (_) {
+    // transient network/auth issues are fine to ignore here
+  } finally {
+    updateSyncBadge();
+  }
+}
+
+async function backgroundPush() {
+  const st = await sync.status();
+  if (!st.signedIn || sync.isRunning()) return;
+  try { await sync.push(); } catch (_) { /* next tick or manual sync will retry */ }
+  finally { updateSyncBadge(); }
+}
+
+const debouncedAutoPush = debounce(backgroundPush, 4000);
+
 // -------------------------------------------------------------- boot
 function wireChrome() {
   const q = $('#q');
@@ -272,7 +307,10 @@ function wireChrome() {
   });
 
   window.addEventListener('hashchange', route);
-  window.addEventListener('online', updateSyncBadge);
+  window.addEventListener('online', () => { updateSyncBadge(); backgroundSync(); });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) backgroundSync();
+  });
 }
 
 async function boot() {
@@ -290,6 +328,8 @@ async function boot() {
   await reload();
   await route();
   updateSyncBadge();
+  backgroundSync();
+  setInterval(() => { if (!document.hidden) backgroundSync(); }, 90000);
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => { /* offline support is optional */ });
