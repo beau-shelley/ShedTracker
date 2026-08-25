@@ -95,6 +95,7 @@ Tap **Use the app's private folder instead** at any time to switch back.
 | `AADSTS50011: redirect URI does not match` | The URI in the app registration is not character-for-character the one the Settings tab shows. Watch the trailing slash. |
 | `AADSTS9002326: cross-origin token redemption` | The redirect URI was registered under *Web* instead of **Single-page application**. Delete it and re-add it under the SPA heading. |
 | `unauthorized_client` | The account type is set to work accounts only. Edit the registration's *Supported account types* to include personal Microsoft accounts. |
+| `AADSTS50020: user account does not exist in tenant 'Microsoft Services'` | Same root cause as above, different wording. Go to the registration's **Authentication** page (or the **Manifest**'s `signInAudience`) and set *Supported account types* to *Accounts in any organizational directory and personal Microsoft accounts*, then sign in again. |
 
 ### Signing in again
 
